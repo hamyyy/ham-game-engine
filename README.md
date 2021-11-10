@@ -1,8 +1,8 @@
 # Ham Game Engine
 
-powered by [Magnum](https://magnum.graphics/) (OpenGl and C++)
+Powered by [Magnum](https://magnum.graphics/) (OpenGl and C++)
 
-work in progress...
+Work in progress...
 
 ---
 
@@ -25,7 +25,7 @@ vcpkg install
 
 code .
 ```
-run from vscode using cmake tools
+Run from vscode using cmake tools
 
 ---
 
