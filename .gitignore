@@ -1,0 +1,5 @@
+build/
+build*/
+*.kdev4
+*~
+vcpkg_installed

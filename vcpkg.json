@@ -1,0 +1,11 @@
+{
+    "name": "ham-game-engine",
+    "version-string": "0.1.0",
+    "description": "Text and font handling library.",
+    "dependencies": [
+        "fmt",
+        "catch2",
+        "entt",
+        "spdlog"
+    ]
+}
