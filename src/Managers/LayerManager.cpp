@@ -3,7 +3,7 @@
 namespace Ham
 {
 
-std::vector<Layer*> LayerManager::_layers = {};
+std::vector<Layer*> LayerManager::_layers           = {};
 uint32_t            LayerManager::_layerInsertIndex = 0;
 
 void LayerManager::PushLayer(Layer* layer)
@@ -86,6 +86,26 @@ Layer* LayerManager::GetLayer(std::string name)
         }
     }
     return nullptr;
+}
+
+size_t LayerManager::GetLayerCount()
+{
+    return _layers.size();
+}
+
+void LayerManager::forEachLayer(std::function<void(Layer*)> func)
+{
+    for (auto it = _layers.begin(); it != _layers.end(); ++it)
+    {
+        func(*it);
+    }
+}
+void LayerManager::forEachLayerReverse(std::function<void(Layer*)> func)
+{
+    for (auto it = _layers.rbegin(); it != _layers.rend(); ++it)
+    {
+        func(*it);
+    }
 }
 
 } // namespace Ham

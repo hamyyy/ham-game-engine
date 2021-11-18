@@ -1,14 +1,12 @@
 cmake_minimum_required(VERSION 3.4)
-project(magnum-gui-template)
+project(Ham-Game-Engine)
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE})
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE})
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE})
+set(RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_BUILD_TYPE}/bin)
 
-file(GLOB SOURCE "./src/*.cpp" "./src/*/*.cpp" "./src/*.c" "./src/*/*.c")
-file(GLOB INCLUDE "./src/*.hpp" "./src/*/*.hpp" "./src/*.h" "./src/*/*.h")
+file(GLOB SOURCE CONFIGURE_DEPENDS "./src/*.cpp" "./src/*/*.cpp" "./src/*.c" "./src/*/*.c")
+file(GLOB INCLUDE CONFIGURE_DEPENDS "./src/*.hpp" "./src/*/*.hpp" "./src/*.h" "./src/*/*.h")
 
-file(GLOB IMGUIZMO_SOURCE "./lib/ImGuizmo/*.cpp" "./lib/ImGuizmo/*.h")
+file(GLOB IMGUIZMO_SOURCE CONFIGURE_DEPENDS "./lib/ImGuizmo/*.cpp" "./lib/ImGuizmo/*.h")
 
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/modules/" ${CMAKE_MODULE_PATH})
 
@@ -16,18 +14,19 @@ set_directory_properties(PROPERTIES CORRADE_USE_PEDANTIC_FLAGS ON)
 
 add_executable(${PROJECT_NAME} WIN32 ${SOURCE} ${INCLUDE} ${IMGUIZMO_SOURCE})
 
+add_custom_command(
+    TARGET ${PROJECT_NAME} POST_BUILD 
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_SOURCE_DIR}/assets
+    ${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE}/assets
+)
+
 target_precompile_headers(${PROJECT_NAME} PRIVATE "include/PCH.hpp")
 target_include_directories(${PROJECT_NAME} PRIVATE "./include")
 
 include(CTest)
 enable_testing()
 
-add_custom_command(
-    TARGET ${PROJECT_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-    ${CMAKE_SOURCE_DIR}/assets
-    ${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE}/assets
-)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
@@ -50,7 +49,14 @@ target_link_libraries(${PROJECT_NAME} PRIVATE spdlog::spdlog_header_only)
 # find_package(imguizmo CONFIG REQUIRED)
 # target_link_libraries(${PROJECT_NAME} PRIVATE imguizmo::imguizmo)
 
+
+### include dependencies/librairies
+
 target_include_directories(${PROJECT_NAME} PRIVATE "./lib/ImGuizmo")
+
+add_subdirectory(lib/lunasvg EXCLUDE_FROM_ALL)
+find_package(lunasvg)
+target_link_libraries(${PROJECT_NAME} PRIVATE lunasvg)
 
 ## add packages
 

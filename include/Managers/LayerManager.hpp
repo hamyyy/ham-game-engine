@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Core/Core.hpp"
-#include "Scene/Layer.hpp"
 
 namespace Ham
 {
@@ -29,7 +28,10 @@ public:
     static Layer* GetLayer(int index);
     static Layer* GetLayer(std::string name);
 
-    static size_t GetLayerCount() { return _layers.size(); }
+    static size_t GetLayerCount();
+
+    static void forEachLayer(std::function<void(Layer*)> func);
+    static void forEachLayerReverse(std::function<void(Layer*)> func);
 
 private:
     static std::vector<Layer*> _layers;

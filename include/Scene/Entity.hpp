@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Core/Core.hpp"
-#include "Scene/Scene.hpp"
 
 namespace Ham
 {
@@ -20,12 +19,21 @@ public:
     template <typename T, typename... Args>
     T& AddComponent(Args&&... args)
     {
+        if (HasComponent<T>())
+        {
+            HAM_CORE_WARN("Entity already has component, returning existing component");
+            return GetComponent<T>();
+        }
+
         return scene->registry.emplace<T>(entity_handle, std::forward<Args>(args)...);
     }
 
     template <typename T>
     T& GetComponent()
     {
+        if (!HasComponent<T>())
+            HAM_CORE_ASSERT(false, "Entity does not have component");
+
         return scene->registry.get<T>(entity_handle);
     }
 
@@ -49,7 +57,7 @@ public:
     template <typename T>
     bool HasComponent()
     {
-        return scene->registry.has<T>(entity_handle);
+        return scene->registry.try_get<T>(entity_handle) != nullptr;
     }
 
     operator entt::entity&()

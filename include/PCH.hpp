@@ -19,6 +19,9 @@
 // entt
 #include <entt/entt.hpp>
 
+// lunaSVG
+#include <lunasvg.h>
+
 // Magnum Platform
 #include <Magnum/Platform/GlfwApplication.h>
 
@@ -29,6 +32,7 @@
 #include <Magnum/Math/Matrix3.h>
 #include <Magnum/Math/Matrix4.h>
 #include <Magnum/Math/Quaternion.h>
+#include <Magnum/Math/Constants.h>
 
 // Magnum GL
 #include <Magnum/GL/Buffer.h>

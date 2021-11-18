@@ -11,6 +11,7 @@ public:
 
     virtual void start() {}
     virtual void update() {}
+    virtual void renderUI(){};
     virtual void exit() {}
 
     virtual void viewportEvent(Magnum::Platform::Application::ViewportEvent& event) {}
@@ -23,6 +24,10 @@ public:
     virtual void textInputEvent(Magnum::Platform::Application::TextInputEvent& event) {}
 
     std::string GetName() { return _name; }
+    bool        isVisible() { return _visible; }
+
+protected:
+    bool _visible = true;
 
 private:
     std::string _name;

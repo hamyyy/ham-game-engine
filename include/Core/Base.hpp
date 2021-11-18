@@ -31,6 +31,9 @@
 
 #define BIT(x) (1 << x)
 
+#define rad_to_deg(x) ((x) * 57.295779513082320876798154814105f)
+#define deg_to_rad(x) ((x) * 0.01745329251994329576923690768489f)
+
 #define HAM_BIND_EVENT_FN(fn) [this](auto&&... args) -> decltype(auto) { \
     return this->fn(std::forward<decltype(args)>(args)...);              \
 }

@@ -8,6 +8,7 @@
 
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/sinks/basic_file_sink.h>
+#include <spdlog/sinks/ostream_sink.h>
 
 namespace Ham
 {
@@ -16,14 +17,18 @@ namespace Ham
 class Log
 {
 public:
-    static void Initialize()
+    inline static void Initialize()
     {
+        s_LoggerStream = {};
+
         std::vector<spdlog::sink_ptr> logSinks;
         logSinks.emplace_back(std::make_shared<spdlog::sinks::stdout_color_sink_mt>());
         logSinks.emplace_back(std::make_shared<spdlog::sinks::basic_file_sink_mt>("Ham.log", true));
+        logSinks.emplace_back(std::make_shared<spdlog::sinks::ostream_sink_mt>(s_LoggerStream));
 
         logSinks[0]->set_pattern("%^[%T] %n: %v%$");
         logSinks[1]->set_pattern("[%T] [%l] %n: %v");
+        logSinks[2]->set_pattern("%^[%T] %n: %v%$");
 
         s_CoreLogger = std::make_shared<spdlog::logger>("HAM", begin(logSinks), end(logSinks));
         spdlog::register_logger(s_CoreLogger);
@@ -36,16 +41,20 @@ public:
         s_ClientLogger->flush_on(spdlog::level::trace);
     }
 
-    static Ref<spdlog::logger>& GetCoreLogger() { return s_CoreLogger; }
-    static Ref<spdlog::logger>& GetClientLogger() { return s_ClientLogger; }
+    inline static Ref<spdlog::logger>& GetCoreLogger() { return s_CoreLogger; }
+    inline static Ref<spdlog::logger>& GetClientLogger() { return s_ClientLogger; }
+
+    inline static std::ostringstream& GetLoggerStringStream() { return s_LoggerStream; }
 
 private:
-    static Ref<spdlog::logger> s_CoreLogger;
-    static Ref<spdlog::logger> s_ClientLogger;
+    inline static Ref<spdlog::logger> s_CoreLogger;
+    inline static Ref<spdlog::logger> s_ClientLogger;
+
+    inline static std::ostringstream s_LoggerStream;
 };
 
-Ref<spdlog::logger> Log::s_CoreLogger;
-Ref<spdlog::logger> Log::s_ClientLogger;
+// Ref<spdlog::logger> Log::s_CoreLogger;
+// Ref<spdlog::logger> Log::s_ClientLogger;
 
 } // namespace Ham
 

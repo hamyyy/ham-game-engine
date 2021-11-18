@@ -4,11 +4,11 @@
 
 namespace Ham
 {
-class RenderLayer : public Layer
+class RenderLayer2 : public Layer
 {
 public:
-    RenderLayer(Scene* scene);
-    ~RenderLayer();
+    RenderLayer2(Scene* scene);
+    ~RenderLayer2();
 
     void start() override;
     void exit() override;

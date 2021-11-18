@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Core/Core.hpp"
-#include "Managers/AssetLoader.hpp"
 
 namespace Ham::Component
 {
@@ -20,25 +19,49 @@ struct Tag
     operator const std::string&() const { return tag; }
 };
 
+struct Index
+{
+    uint32_t index;
+
+    Index()           = default;
+    Index(const Index&) = default;
+
+    Index(const uint32_t& s_index) :
+        index(s_index){};
+
+    operator uint32_t&() { return index; }
+    operator const uint32_t&() const { return index; }
+};
+
 struct Transform
 {
 
-    Magnum::Vector3 position = {0, 0, 0};
-    Magnum::Vector3 rotation = {0, 0, 0};
-    Magnum::Vector3 scale    = {1, 1, 1};
+    Magnum::Vector3 position = {0.f, 0.f, 0.f};      // x y z position
+    Deg3            rotation = Deg3(Math::ZeroInit); // Euler angles are stroed in degrees
+    Magnum::Vector3 scale    = {1.f, 1.f, 1.f};      // x y z scale
 
     Magnum::Matrix4 ToMatrix()
     {
+
         auto translationMat = Magnum::Matrix4::translation(position);
-        
+
         auto rotationMat =
-            Magnum::Matrix4::rotationZ(Magnum::Rad(rotation.z())) *
-            Magnum::Matrix4::rotationY(Magnum::Rad(rotation.y())) *
-            Magnum::Matrix4::rotationX(Magnum::Rad(rotation.x()));
+            Magnum::Matrix4::rotationZ(rotation.z()) *
+            Magnum::Matrix4::rotationY(rotation.y()) *
+            Magnum::Matrix4::rotationX(rotation.x());
 
         auto scaleMat = Magnum::Matrix4::scaling(scale);
 
-        return scaleMat * rotationMat * translationMat;
+        return translationMat * rotationMat * scaleMat;
+    }
+
+    void SetFromMatrix(Magnum::Float* matrix)
+    {
+        auto mat = Matrix4::from(matrix);
+
+        position = mat.translation();
+        rotation = Deg3(Math::Quaternion<Magnum::Float>::fromMatrix(mat.rotation()).toEuler());
+        scale    = mat.scaling();
     }
 
     Transform()                 = default;
@@ -80,7 +103,7 @@ using Mesh = Magnum::GL::Mesh;
 // using Material = Magnum::Shaders::PhongGL;
 struct Material : public Magnum::Shaders::PhongGL
 {
-    Magnum::Color3 color;
+    Magnum::Color4 color;
 };
 
 struct Light
@@ -149,5 +172,39 @@ struct Camera
         return Magnum::Matrix4{};
     }
 };
+
+namespace Gui
+{
+
+struct ImGuiWindow
+{
+    bool        isOpen            = true;
+    bool        isFocused         = false;
+    bool        isTitlebarDragged = false;
+    std::string title;
+
+    // ImGuiWindow(const ImGuiWindow&) = default;
+    ImGuiWindow(std::string s_title) :
+        title(s_title) {}
+};
+
+struct GLWindow
+{
+    bool        isOpen            = true;
+    bool        isFocused         = false;
+    bool        isTitlebarDragged = false;
+    Vector2i    size;
+    std::string title;
+
+    Magnum::GL::Framebuffer frameBuffer;
+    GL::Texture2D           colorBuffer;
+    GL::Renderbuffer        depthBuffer;
+
+    // GLWindow(const GLWindow&) = default;
+    GLWindow(std::string s_title) :
+        title(s_title), size(500, 500), frameBuffer({{}, {}}) {}
+};
+
+} // namespace Gui
 
 } // namespace Ham::Component

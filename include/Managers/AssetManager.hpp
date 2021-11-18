@@ -1,8 +1,6 @@
 #pragma once
 
 #include "Managers/AssetLoader.hpp"
-#include "Scene/Components.hpp"
-#include "Scene/Scene.hpp"
 
 namespace Ham
 {

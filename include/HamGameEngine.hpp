@@ -1,8 +1,10 @@
 #pragma once
 
 #include "Core/Core.hpp"
+
 #include "Layers/ImGuiLayer.hpp"
 #include "Layers/RenderLayer.hpp"
+#include "Layers/RenderLayer2.hpp"
 
 using namespace Math::Literals;
 
@@ -29,6 +31,7 @@ public:
 
 private:
     void drawEvent() override;
+    void drawTitlebar();
 
     Scene _scene;
 
@@ -39,12 +42,10 @@ private:
     Color4 _clearColor        = 0x72909aff_rgbaf;
     Float  _floatValue        = 0.0f;
 
+    Vector2i _mouseDownPos;
+
     GL::Mesh         _mesh;
     Shaders::PhongGL _shader;
-
-    Magnum::GL::Framebuffer _frameBuffer;
-    GL::Texture2D           _frameBufferColor;
-    GL::Renderbuffer        _frameBufferDepthStencil;
 
     Matrix4 _transformation, _projection;
     Color3  _color;
