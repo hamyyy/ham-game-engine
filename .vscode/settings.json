@@ -2,6 +2,10 @@
     "cmake.configureSettings": {
         "VCPKG_TARGET_TRIPLET": "x64-windows"
     },
+    "cmake.debugConfig": {
+        "console": "integratedTerminal",
+        "internalConsoleOptions": "neverOpen",
+    },
     "files.associations": {
         "*.glsl": "glsl",
         "*.cs": "csharp",

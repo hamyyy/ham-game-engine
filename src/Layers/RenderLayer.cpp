@@ -16,12 +16,19 @@ RenderLayer::~RenderLayer() {}
 
 void RenderLayer::start()
 {
-    _layer.AddComponent<Component::Gui::GLWindow>("Scene");
 
     auto camera = _scene->AddEditorCamera();
-    // camera.AddComponent<Component::Camera>(Magnum::Deg(35.0f), Vector2{16, 9}.aspectRatio(), 0.01f, 100.0f);
+    camera.GetComponent<Component::Camera>().farPlane = 1000.0f;
+    _layer.AddComponent<Component::Gui::GLWindow>("Scene", camera);
+    // camera.AddComponent<Component::Camera>(Deg(35.0f), Vector2{16, 9}.aspectRatio(), 0.01f, 100.0f);
 
-    camera.GetComponent<Component::Transform>().position.z() = 10.0f;
+    camera.GetComponent<Component::Transform>().position.x() = -23.0f;
+    camera.GetComponent<Component::Transform>().position.y() = 10.0f;
+    camera.GetComponent<Component::Transform>().position.z() = -32.0f;
+
+    camera.GetComponent<Component::Transform>().rotation.x() = -10.0_degf;
+    camera.GetComponent<Component::Transform>().rotation.y() = 220.0_degf;
+
 
     Trade::MeshData cubePrimitive = Primitives::cubeSolid();
     GL::Buffer      vertices;
@@ -62,6 +69,7 @@ void RenderLayer::update()
     camera.aspectRatio = Vector2{size}.aspectRatio();
 
     System::Draw(_scene, _scene->GetEditorCamera(0));
+    System::DebugDraw(_scene, _scene->GetEditorCamera(0));
 }
 
 void RenderLayer::renderUI()
@@ -96,10 +104,10 @@ void RenderLayer::renderUI()
         //     {
         //         auto& t        = cube.GetComponent<Component::Transform>();
         //         t.position     = entityTransform.translation();
-        //         auto euler     = Math::Quaternion<Magnum::Float>::fromMatrix(entityTransform.rotation()).toEuler();
-        //         t.rotation.x() = ((Magnum::Float)euler.x());
-        //         t.rotation.y() = ((Magnum::Float)euler.y());
-        //         t.rotation.z() = ((Magnum::Float)euler.z());
+        //         auto euler     = Math::Quaternion<Float>::fromMatrix(entityTransform.rotation()).toEuler();
+        //         t.rotation.x() = ((Float)euler.x());
+        //         t.rotation.y() = ((Float)euler.y());
+        //         t.rotation.z() = ((Float)euler.z());
         //         t.scale        = entityTransform.scaling();
         //     }
         // }
@@ -107,31 +115,31 @@ void RenderLayer::renderUI()
     ImGui::End();
 }
 
-void RenderLayer::viewportEvent(Magnum::Platform::Application::ViewportEvent& event) {}
-void RenderLayer::keyPressEvent(Magnum::Platform::Application::KeyEvent& event)
+void RenderLayer::viewportEvent(Platform::Application::ViewportEvent& event) {}
+void RenderLayer::keyPressEvent(Platform::Application::KeyEvent& event)
 {
     if (!_layer.GetComponent<Component::Gui::GLWindow>().isFocused) return;
     event.setAccepted();
 }
-void RenderLayer::keyReleaseEvent(Magnum::Platform::Application::KeyEvent& event)
+void RenderLayer::keyReleaseEvent(Platform::Application::KeyEvent& event)
 {
     if (!_layer.GetComponent<Component::Gui::GLWindow>().isFocused) return;
     event.setAccepted();
 }
-void RenderLayer::mousePressEvent(Magnum::Platform::Application::MouseEvent& event)
+void RenderLayer::mousePressEvent(Platform::Application::MouseEvent& event)
 {
     if (!_layer.GetComponent<Component::Gui::GLWindow>().isFocused) return;
     event.setAccepted();
 }
-void RenderLayer::mouseReleaseEvent(Magnum::Platform::Application::MouseEvent& event)
+void RenderLayer::mouseReleaseEvent(Platform::Application::MouseEvent& event)
 {
     if (!_layer.GetComponent<Component::Gui::GLWindow>().isFocused) return;
     event.setAccepted();
 }
-void RenderLayer::mouseMoveEvent(Magnum::Platform::Application::MouseMoveEvent& event)
+void RenderLayer::mouseMoveEvent(Platform::Application::MouseMoveEvent& event)
 {
     if (!_layer.GetComponent<Component::Gui::GLWindow>().isFocused) return;
-    if (!(event.buttons() & Magnum::Platform::Application::MouseMoveEvent::Button::Left)) return;
+    if (!(event.buttons() & Platform::Application::MouseMoveEvent::Button::Left)) return;
 
     auto& size = _layer.GetComponent<Component::Gui::GLWindow>().size;
 
@@ -144,12 +152,12 @@ void RenderLayer::mouseMoveEvent(Magnum::Platform::Application::MouseMoveEvent& 
 
     event.setAccepted();
 }
-void RenderLayer::mouseScrollEvent(Magnum::Platform::Application::MouseScrollEvent& event)
+void RenderLayer::mouseScrollEvent(Platform::Application::MouseScrollEvent& event)
 {
     if (!_layer.GetComponent<Component::Gui::GLWindow>().isFocused) return;
     event.setAccepted();
 }
-void RenderLayer::textInputEvent(Magnum::Platform::Application::TextInputEvent& event)
+void RenderLayer::textInputEvent(Platform::Application::TextInputEvent& event)
 {
     if (!_layer.GetComponent<Component::Gui::GLWindow>().isFocused) return;
     event.setAccepted();

@@ -16,14 +16,14 @@ public:
 
     void renderUI() override;
 
-    void viewportEvent(Magnum::Platform::Application::ViewportEvent& event) override;
-    void keyPressEvent(Magnum::Platform::Application::KeyEvent& event) override;
-    void keyReleaseEvent(Magnum::Platform::Application::KeyEvent& event) override;
-    void mousePressEvent(Magnum::Platform::Application::MouseEvent& event) override;
-    void mouseReleaseEvent(Magnum::Platform::Application::MouseEvent& event) override;
-    void mouseMoveEvent(Magnum::Platform::Application::MouseMoveEvent& event) override;
-    void mouseScrollEvent(Magnum::Platform::Application::MouseScrollEvent& event) override;
-    void textInputEvent(Magnum::Platform::Application::TextInputEvent& event) override;
+    void viewportEvent(Platform::Application::ViewportEvent& event) override;
+    void keyPressEvent(Platform::Application::KeyEvent& event) override;
+    void keyReleaseEvent(Platform::Application::KeyEvent& event) override;
+    void mousePressEvent(Platform::Application::MouseEvent& event) override;
+    void mouseReleaseEvent(Platform::Application::MouseEvent& event) override;
+    void mouseMoveEvent(Platform::Application::MouseMoveEvent& event) override;
+    void mouseScrollEvent(Platform::Application::MouseScrollEvent& event) override;
+    void textInputEvent(Platform::Application::TextInputEvent& event) override;
 
 private:
     Scene* _scene;

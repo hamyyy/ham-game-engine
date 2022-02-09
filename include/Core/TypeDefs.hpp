@@ -2,6 +2,6 @@
 
 namespace Ham
 {
-typedef Magnum::Math::Vector3<Magnum::Deg> Deg3;
-typedef Magnum::Math::Vector3<Magnum::Rad> Rad3;
+typedef Math::Vector3<Deg> Deg3;
+typedef Math::Vector3<Rad> Rad3;
 }

@@ -20,10 +20,7 @@ public:
     T& AddComponent(Args&&... args)
     {
         if (HasComponent<T>())
-        {
-            HAM_CORE_WARN("Entity already has component, returning existing component");
             return GetComponent<T>();
-        }
 
         return scene->registry.emplace<T>(entity_handle, std::forward<Args>(args)...);
     }

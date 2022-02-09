@@ -46,9 +46,13 @@
 
 // Magnum Shaders
 #include <Magnum/Shaders/PhongGL.h>
+#include <Magnum/Shaders/MeshVisualizerGL.h>
 
 // Magnum Primitives
 #include <Magnum/Primitives/Cube.h>
+#include <Magnum/Primitives/Line.h>
+#include <Magnum/Primitives/Circle.h>
+#include <Magnum/Primitives/Square.h>
 
 // Magnum SceneGraph
 #include <Magnum/SceneGraph/SceneGraph.h>
@@ -62,7 +66,18 @@
 
 // Magnum Trade
 #include <Magnum/Trade/MeshData.h>
+#include <Magnum/Trade/ImageData.h>
 
 // Magnum ImGui Integration
 #include <Magnum/ImGuiIntegration/Context.hpp>
 #include <Magnum/ImGuiIntegration/Widgets.h>
+
+// Magnum image processing
+#include <Magnum/PixelFormat.h>
+#include <Magnum/ImageView.h>
+
+// Magnum Containers
+#include <Magnum/Array.h>
+
+// Magnum Core Features
+#include <Magnum/Timeline.h>

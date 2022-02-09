@@ -46,6 +46,27 @@ public:
 
     inline static std::ostringstream& GetLoggerStringStream() { return s_LoggerStream; }
 
+    inline static void SuppressCore() { s_CoreLogger->set_level(spdlog::level::off); }
+
+    inline static void SuppressClient() { s_ClientLogger->set_level(spdlog::level::off); }
+
+    inline static void UnsuppressCore() { s_CoreLogger->set_level(spdlog::level::trace); }
+
+    inline static void UnsuppressClient() { s_ClientLogger->set_level(spdlog::level::trace); }
+
+    inline static void Suppress()
+    {
+        s_CoreLogger->set_level(spdlog::level::off);
+        s_ClientLogger->set_level(spdlog::level::off);
+    }
+
+    inline static void Unsuppress()
+    {
+        s_CoreLogger->set_level(spdlog::level::trace);
+        s_ClientLogger->set_level(spdlog::level::trace);
+    }
+
+
 private:
     inline static Ref<spdlog::logger> s_CoreLogger;
     inline static Ref<spdlog::logger> s_ClientLogger;

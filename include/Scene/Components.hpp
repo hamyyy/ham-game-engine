@@ -23,7 +23,7 @@ struct Index
 {
     uint32_t index;
 
-    Index()           = default;
+    Index()             = default;
     Index(const Index&) = default;
 
     Index(const uint32_t& s_index) :
@@ -36,86 +36,139 @@ struct Index
 struct Transform
 {
 
-    Magnum::Vector3 position = {0.f, 0.f, 0.f};      // x y z position
+    Vector3 position = {0.f, 0.f, 0.f};      // x y z position
     Deg3            rotation = Deg3(Math::ZeroInit); // Euler angles are stroed in degrees
-    Magnum::Vector3 scale    = {1.f, 1.f, 1.f};      // x y z scale
+    Vector3 scale    = {1.f, 1.f, 1.f};      // x y z scale
 
-    Magnum::Matrix4 ToMatrix()
+    Matrix4 ToMatrix()
     {
 
-        auto translationMat = Magnum::Matrix4::translation(position);
+        auto translationMat = Matrix4::translation(position);
 
         auto rotationMat =
-            Magnum::Matrix4::rotationZ(rotation.z()) *
-            Magnum::Matrix4::rotationY(rotation.y()) *
-            Magnum::Matrix4::rotationX(rotation.x());
+            Matrix4::rotationY(rotation.y()) *
+            Matrix4::rotationZ(rotation.z()) *
+            Matrix4::rotationX(rotation.x());
 
-        auto scaleMat = Magnum::Matrix4::scaling(scale);
+        auto scaleMat = Matrix4::scaling(scale);
 
         return translationMat * rotationMat * scaleMat;
     }
 
-    void SetFromMatrix(Magnum::Float* matrix)
+    void SetFromMatrix(Float* matrix)
     {
         auto mat = Matrix4::from(matrix);
 
         position = mat.translation();
-        rotation = Deg3(Math::Quaternion<Magnum::Float>::fromMatrix(mat.rotation()).toEuler());
+        rotation = Deg3(Math::Quaternion<Float>::fromMatrix(mat.rotation()).toEuler());
         scale    = mat.scaling();
     }
 
+    Vector3 GetForward()
+    {
+        return ToMatrix().transformVector(Vector3::zAxis(-1)).normalized();
+    }
+
+    Vector3 GetUp()
+    {
+        return ToMatrix().transformVector(Vector3::yAxis()).normalized();
+    }
+
+    Vector3 GetRight()
+    {
+        return ToMatrix().transformVector(Vector3::xAxis()).normalized();
+    }
+
+
     Transform()                 = default;
     Transform(const Transform&) = default;
-    Transform(Magnum::Vector3 pos) :
+    Transform(Vector3 pos) :
         position(pos) {}
 
-    // Transform(const Magnum::Matrix4& s_transform) :
-    //     Magnum::SceneGraph::TranslationRotationScalingTransformation3D()
+    // Transform(const Matrix4& s_transform) :
+    //     SceneGraph::TranslationRotationScalingTransformation3D()
     // {
     //     this->resetTransformation();
     //     this->scale(s_transform.scaling());
-    //     this->rotate(Magnum::Math::Quaternion<Magnum::Float>::fromMatrix(s_transform.rotation()));
+    //     this->rotate(Math::Quaternion<Float>::fromMatrix(s_transform.rotation()));
     //     this->translate(s_transform.translation());
     // };
 };
 
 // struct Mesh
 // {
-//     Magnum::GL::Buffer    vertexBuffer;
-//     Magnum::GL::Buffer    indexBuffer;
-//     Magnum::MeshIndexType indexType;
-//     Magnum::UnsignedInt   indexCount;
+//     GL::Buffer    vertexBuffer;
+//     GL::Buffer    indexBuffer;
+//     MeshIndexType indexType;
+//     UnsignedInt   indexCount;
 
 //     Mesh()            = default;
 //     Mesh(const Mesh&) = default;
 
-//     Mesh(Corrade::Containers::ArrayView<const void> s_vertexBuffer, Corrade::Containers::ArrayView<const void> s_indexBuffer, Magnum::MeshIndexType s_indexType = Magnum::MeshIndexType::UnsignedInt) :
+//     Mesh(Corrade::Containers::ArrayView<const void> s_vertexBuffer, Corrade::Containers::ArrayView<const void> s_indexBuffer, MeshIndexType s_indexType = MeshIndexType::UnsignedInt) :
 //         indexType(s_indexType)
 //     {
 //         vertexBuffer.setData(s_vertexBuffer);
 //         indexBuffer.setData(s_indexBuffer);
-//         indexCount = (Magnum::UnsignedInt)s_indexBuffer.size();
+//         indexCount = (UnsignedInt)s_indexBuffer.size();
 //     }
 // };
 
-using Mesh = Magnum::GL::Mesh;
-
-// using Material = Magnum::Shaders::PhongGL;
-struct Material : public Magnum::Shaders::PhongGL
+// using Material = Shaders::PhongGL;
+struct ShaderMaterial
 {
-    Magnum::Color4 color;
+    Shaders::PhongGL shader;
+    Color4                   color;
+
+    ShaderMaterial(Shaders::PhongGL::Flags flags = {}, UnsignedInt lightCount = 1) :
+        shader(flags, lightCount),
+        color(1.f, 1.f, 1.f, 1.f) {}
+};
+
+struct MeshVisualizerShaderMaterial
+{
+    Shaders::MeshVisualizerGL3D shader;
+    Color4                      color;
+    Color4                      wireframeColor;
+    float                       wireframeWidth;
+
+    MeshVisualizerShaderMaterial(Shaders::MeshVisualizerGL3D::Flags flags = Shaders::MeshVisualizerGL3D::Flag::Wireframe | Shaders::MeshVisualizer3D::Flag::NoGeometryShader) :
+        shader(flags),
+        color(1.f, 1.f, 1.f, 0.f),
+        wireframeColor(1.f, 1.f, 1.f, 1.f),
+        wireframeWidth(1.f) {}
+};
+
+struct Mesh
+{
+    GL::Mesh mesh;
+
+    Mesh(GL::MeshPrimitive primitive = GL::MeshPrimitive::Triangles) :
+        mesh(primitive) {}
+
+    operator GL::Mesh&() { return mesh; }
+};
+
+struct DebugMesh
+{
+    GL::Mesh mesh;
+
+    DebugMesh(GL::MeshPrimitive primitive = GL::MeshPrimitive::Triangles) :
+        mesh(primitive) {}
+
+    operator GL::Mesh&() { return mesh; }
 };
 
 struct Light
 {
-    Magnum::Vector3 color;
-    Magnum::Float   intensity;
+    Vector3 color;
+    Float   intensity;
 
     Light()             = default;
     Light(const Light&) = default;
 
-    Light(const Magnum::Vector3& s_color,
-          const Magnum::Float&   s_intensity) :
+    Light(const Vector3& s_color,
+          const Float&   s_intensity) :
         color(s_color),
         intensity(s_intensity){};
 };
@@ -128,21 +181,21 @@ struct Camera
         Orthographic
     };
 
-    Magnum::Rad     fov;
-    Magnum::Float   aspectRatio;
-    Magnum::Float   nearPlane;
-    Magnum::Float   farPlane;
-    Magnum::Vector2 size;
+    Rad     fov;
+    Float   aspectRatio;
+    Float   nearPlane;
+    Float   farPlane;
+    Vector2 size;
     CameraType      type;
 
     Camera()              = default;
     Camera(const Camera&) = default;
 
     // Perspective Camera
-    Camera(const Magnum::Rad&   s_fov,
-           const Magnum::Float& s_aspectRatio,
-           const Magnum::Float& s_near,
-           const Magnum::Float& s_far) :
+    Camera(const Rad&   s_fov,
+           const Float& s_aspectRatio,
+           const Float& s_near,
+           const Float& s_far) :
         fov(s_fov),
         aspectRatio(s_aspectRatio),
         nearPlane(s_near),
@@ -150,26 +203,26 @@ struct Camera
         type(CameraType::Perspective){};
 
     // orthographic camera
-    Camera(const Magnum::Vector2& s_size,
-           const Magnum::Float&   s_near,
-           const Magnum::Float&   s_far) :
+    Camera(const Vector2& s_size,
+           const Float&   s_near,
+           const Float&   s_far) :
         size(s_size),
         nearPlane(s_near),
         farPlane(s_far),
         type(CameraType::Orthographic){};
 
-    Magnum::Matrix4 getProjectionMatrix()
+    Matrix4 getProjectionMatrix()
     {
         switch (type)
         {
             case CameraType::Perspective:
-                return Magnum::Matrix4::perspectiveProjection(fov, aspectRatio, nearPlane, farPlane);
+                return Matrix4::perspectiveProjection(fov, aspectRatio, nearPlane, farPlane);
             case CameraType::Orthographic:
-                return Magnum::Matrix4::orthographicProjection(size, nearPlane, farPlane);
+                return Matrix4::orthographicProjection(size, nearPlane, farPlane);
             default:
                 break;
         }
-        return Magnum::Matrix4{};
+        return Matrix4{};
     }
 };
 
@@ -195,14 +248,30 @@ struct GLWindow
     bool        isTitlebarDragged = false;
     Vector2i    size;
     std::string title;
+    Entity      camera;
 
-    Magnum::GL::Framebuffer frameBuffer;
-    GL::Texture2D           colorBuffer;
-    GL::Renderbuffer        depthBuffer;
+    GL::Framebuffer  frameBuffer;
+    GL::Texture2D    colorBuffer;
+    GL::Renderbuffer depthBuffer;
 
     // GLWindow(const GLWindow&) = default;
-    GLWindow(std::string s_title) :
-        title(s_title), size(500, 500), frameBuffer({{}, {}}) {}
+
+    GLWindow(std::string s_title, Entity s_camera) :
+        title(s_title), size(512, 512), frameBuffer({{}, {}}), camera(s_camera) {}
+};
+
+struct Gizmo
+{
+    std::string         path;
+    GL::Texture2D*      image     = nullptr;
+    bool                isVisible = true;
+    ImageView2D imageData;
+
+    Gizmo()             = default;
+    Gizmo(const Gizmo&) = default;
+
+    Gizmo(const std::string s_path, Vector2i size) :
+        path(s_path), imageData(PixelFormat::RGBA8Unorm, size){};
 };
 
 } // namespace Gui

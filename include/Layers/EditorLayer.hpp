@@ -4,21 +4,17 @@
 
 namespace Ham
 {
-class ImGuiLayer : public Layer
+class EditorLayer : public Layer
 {
 public:
-    ImGuiLayer(Scene* scene);
-    ImGuiLayer(Scene* scene, const Vector2& size, const Vector2i& windowSize, const Vector2i& framebufferSize);
-
-    ~ImGuiLayer();
+    EditorLayer(Scene* scene);
+    ~EditorLayer();
 
     void start() override;
     void exit() override;
+    void update() override;
 
     void renderUI() override;
-
-    void begin();
-    void end();
 
     void viewportEvent(Platform::Application::ViewportEvent& event) override;
     void keyPressEvent(Platform::Application::KeyEvent& event) override;
@@ -29,13 +25,8 @@ public:
     void mouseScrollEvent(Platform::Application::MouseScrollEvent& event) override;
     void textInputEvent(Platform::Application::TextInputEvent& event) override;
 
-    inline ImGuiIntegration::Context& GetIntegration() { return _integration; }
-
 private:
-    ImGuiIntegration::Context _integration{NoCreate};
-    Scene*                    _scene;
-    bool _sceneIsFocused = false;
-    bool _isTitlebarBeingDragged = false;
-    Vector2i _mouseDownPos;
+    Scene* _scene;
+    Entity _layer;
 };
 } // namespace Ham

@@ -1,0 +1,394 @@
+make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+# This program built for i386-pc-mingw32
+ 
+
+# Make data base, printed on Fri Feb 04 23:14:07 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# makefile
+MAKEFLAGS = Rrqp
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+HOMEDRIVE = C:
+# automatic
+@F = $(notdir $@)
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# makefile
+CURDIR := c:/Users/oudy_/Documents/Projects/C_C++/Magnum/magnum-bootstrap-base
+# default
+SHELL := C:/Program Files/Git/bin/sh.exe
+# environment
+WINDIR = C:\WINDOWS
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# environment
+VBOX_MSI_INSTALL_PATH = D:\Program Files\Oracle\VirtualBox\
+# environment
+NVM_HOME = C:\Users\oudy_\AppData\Roaming\nvm
+# environment
+QSYS_ROOTDIR = D:\intelFPGA_pro\18.1\qsys\bin
+# environment
+PUBLIC = C:\Users\Public
+# environment
+PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW
+# makefile
+MAKEFILE_LIST := 
+# environment
+FPS_BROWSER_USER_PROFILE_STRING = Default
+# environment
+TMP = C:\Users\oudy_\AppData\Local\Temp
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+PROGRAMW6432 = C:\Program Files
+# environment
+NVM_SYMLINK = C:\Program Files\nodejs
+# environment
+ONEDRIVECOMMERCIAL = C:\Users\oudy_\OneDrive - UTS
+# environment
+PROGRAMDATA = C:\ProgramData
+# environment
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-c9b9c1bb-7c8f-455d-a338-a89995cd1a34-sock
+# environment
+VSCODE_CWD = C:\Users\oudy_\AppData\Local\Programs\Microsoft VS Code Insiders
+# environment
+PATH = C:\Program Files\VulkanSDK\1.2.189.2\Bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\Program Files (x86)\Razer\ChromaBroadcast\bin;C:\Program Files\Razer\ChromaBroadcast\bin;C:\Python37\;C:\Python37\Scripts\;C:\Users\oudy_\AppData\Roaming\Python\Python37\Scripts;C:\Python27\;C:\Python27\Scripts;C:\Users\oudy_\AppData\Roaming\Python\Scripts;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\apache-maven-3.8.1\bin\;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\ProgramData\chocolatey\bin;D:\MatLab\runtime\win64;D:\MatLab\bin;C:\Program Files (x86)\IVI Foundation\IVI\bin;C:\Program Files\IVI Foundation\IVI\bin;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin\;C:\Program Files\IVI Foundation\VISA\Win64\Bin\;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin;C:\Program Files\PuTTY\;C:\MinGW\bin;C:\Go\bin;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\ffmpeg\bin;C:\Program Files (x86)\Lame For Audacity\;C:\Program Files (x86)\sox-14-4-2;C:\Program Files\heroku\bin\;C:\Program Files\processing-3.5.4;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\WINDOWS\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;D:\Program Files\OpenSCAD\;C:\Program Files\dotnet\;C:\Program Files (x86)\GnuWin32\bin\;C:\Users\oudy_\.deno\bin\;C:\Users\oudy_\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files (x86)\serialplot\bin;C:\Program Files\CMake\bin;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files\Git\cmd;C:\Users\oudy_\AppData\Local\Microsoft\WindowsApps;C:\Users\oudy_\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\oudy_\go\bin;C:\Users\oudy_\AppData\Local\Programs\Microsoft VS Code Insiders\bin;C:\Users\oudy_\.dotnet\tools;;C:\Users\oudy_\AppData\Roaming\npm;C:\Users\oudy_\AppData\Roaming\npm\;C:\Users\oudy_\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\mingw32\bin;C:\SFML-2.5.1\bin;C:\Program Files\Git\bin;;C:\Program Files\RedHat\java-1.8.0-openjdk-1.8.0.292-2\bin;C:\Program Files\RedHat\java-1.8.0-openjdk-1.8.0.292-2\jre\bin;C:\Program Files\RedHat\java-11-openjdk-11.0.11-1\bin;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\dotnet\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\vcpkg\vcpkg\;C:\Program Files\CMake\bin\;
+# environment
+SW_SIM_HYDRA = C:\Program Files\Common Files\SolidWorks Shared\Simulation Worker Agent\
+# environment
+COMMONPROGRAMW6432 = C:\Program Files\Common Files
+# environment
+NIEXTCCOMPILERSUPP = C:\Program Files (x86)\National Instruments\Shared\ExternalCompilerSupport\C\
+# environment
+CHOCOLATEYLASTPATHUPDATE = 132266802230266047
+# environment
+PROCESSOR_ARCHITECTURE = x86
+# environment
+VXIPNPPATH64 = C:\Program Files\IVI Foundation\VISA\
+# environment
+VSCODE_IPC_HOOK = \\.\pipe\3d7189ae5146cae3f53eca28aab46335-1.64.0-insider-main-sock
+# environment
+ONEDRIVE = C:\Users\oudy_\OneDrive - UTS
+# environment
+USERPROFILE = C:\Users\oudy_
+# environment
+CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
+# environment
+ALLUSERSPROFILE = C:\ProgramData
+# environment
+SOPC_KIT_NIOS2 = D:\intelFPGA_pro\18.1\nios2eds
+# environment
+VSCODE_LOG_STACK = true
+# environment
+NUMBER_OF_PROCESSORS = 8
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# default
+.FEATURES := target-specific order-only second-expansion else-if archives
+# environment
+VK_SDK_PATH = C:\Program Files\VulkanSDK\1.2.189.2
+# environment
+NIIVIPATH = C:\Program Files (x86)\IVI Foundation\IVI\
+# automatic
+%F = $(notdir $%)
+# environment
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_16844_MUEWUYKNCIALOKEZ
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+COMPUTERNAME = HAMOUDYS-PC
+# environment
+PROGRAMFILES = C:\Program Files (x86)
+# environment
+DRIVERDATA = C:\Windows\System32\Drivers\DriverData
+# environment
+ASL.LOG = Destination=file
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+USERNAME = oudy_
+# environment
+KMP_DUPLICATE_LIB_OK = TRUE
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
+# environment
+VSCODE_CODE_CACHE_PATH = C:\Users\oudy_\AppData\Roaming\Code - Insiders\CachedData\b8178e3e2f3f620ebdd31dfbfba937ff1b12ee04
+# environment
+HOOPS_LICENSE_KEY = c480f7b0c8c5d9481972b65e5bb8%;feae791a3ea8364138cf2d013afcdba1c5161243159cce85783736b215543765278a49565401db0f07d7a21c7c8e79b7e332b480902bcbaca254b0728a1312b970b35c5f62ba9daa4739dc50e3a32e93b9be312778f2db4fa3083142a5a0de18b12616a6e748ba5d0daf5493279a73406f200e%;d0b9
+# environment
+PATH2 = C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\ProgramData\chocolatey\bin;D:\MatLab\runtime\win64;D:\MatLab\bin;C:\Program Files (x86)\IVI Foundation\IVI\bin;C:\Program Files\IVI Foundation\IVI\bin;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin\;C:\Program Files\IVI Foundation\VISA\Win64\Bin\;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin;C:\Program Files\PuTTY\;C:\MinGW\bin;C:\Go\bin;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\ffmpeg\bin;C:\Program Files (x86)\Lame For Audacity\;C:\Program Files (x86)\sox-14-4-2;C:\Program Files\heroku\bin\;C:\Program Files\processing-3.5.4;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\WINDOWS\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;D:\Program Files\OpenSCAD\;C:\Program Files\dotnet\;C:\Program Files (x86)\GnuWin32\bin\;C:\Users\oudy_\.deno\bin\;C:\Users\oudy_\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files (x86)\serialplot\bin;C:\Program Files\CMake\bin;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files\Git\cmd;C:\Users\oudy_\AppData\Local\Microsoft\WindowsApps;C:\Users\oudy_\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\oudy_\go\bin;C:\Users\oudy_\AppData\Local\Programs\Microsoft VS Code Insiders\bin;C:\Users\oudy_\.dotnet\tools;
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# environment
+COMMONPROGRAMFILES = C:\Program Files (x86)\Common Files
+# environment
+LOGONSERVER = \\HAMOUDYS-PC
+# environment
+ONEDRIVECONSUMER = C:\Users\oudy_\OneDrive
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# environment
+USERDOMAIN = HAMOUDYS-PC
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+IVIROOTDIR32 = C:\Program Files (x86)\IVI Foundation\IVI\
+# environment
+OMP_NUM_THREADS = 8
+# default
+MAKE_VERSION := 3.81
+# makefile
+.DEFAULT_GOAL := 
+# environment
+PROGRAMFILES(X86) = C:\Program Files (x86)
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+LOCALAPPDATA = C:\Users\oudy_\AppData\Local
+# environment
+PSMODULEPATH = %ProgramFiles%\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\PowerShell\Modules\
+# default
+MAKE_COMMAND := make.exe
+# environment
+PROCESSOR_ARCHITEW6432 = AMD64
+# environment
+AMDRMSDKPATH = C:\Program Files\AMD\RyzenMasterSDK\
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# environment
+PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 24 Stepping 1, AuthenticAMD
+# environment
+OS = Windows_NT
+# environment
+IVIROOTDIR64 = C:\Program Files\IVI Foundation\IVI\
+# environment
+HOMEPATH = \Users\oudy_
+# environment
+COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
+# environment
+PROMPT = $P$G
+# environment
+MFLAGS = -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+SYSTEMROOT = C:\WINDOWS
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# automatic
++F = $(notdir $+)
+# environment
+APPDATA = C:\Users\oudy_\AppData\Roaming
+# environment
+__COMPAT_LAYER = DetectorsShimLog
+# environment
+VXIPNPPATH = C:\Program Files (x86)\IVI Foundation\VISA\
+# environment
+TEMP = C:\Users\oudy_\AppData\Local\Temp
+# environment
+PATH3 = C:\Users\oudy_\AppData\Roaming\npm;C:\Users\oudy_\AppData\Roaming\npm\;C:\Users\oudy_\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\mingw32\bin;C:\SFML-2.5.1\bin;C:\Program Files\Git\bin;
+# environment
+COMSPEC = C:\WINDOWS\system32\cmd.exe
+# default
+MAKEFILES := 
+# environment
+QUARTUS_ROOTDIR = D:\intelFPGA_pro\18.1\quartus
+# environment
+VCPKG_DEFAULT_TRIPLET = x64-windows
+# automatic
+<F = $(notdir $<)
+# environment
+MKL_SERIAL = YES
+# environment
+LC_ALL = C
+# environment
+SW_SIM_TEMP = C:\ProgramData\SOLIDWORKS\SW_net_sim_temp\
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# environment
+SYSTEMDRIVE = C:
+# environment
+SESSIONNAME = Console
+# environment
+PROCESSOR_REVISION = 1801
+# environment
+SW_SIM_MPIT = INTELMPI
+# environment
+MAKELEVEL := 0
+# environment
+VULKAN_SDK = C:\Program Files\VulkanSDK\1.2.189.2
+# environment
+LANG = C
+# environment
+PROCESSOR_LEVEL = 23
+# environment
+FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
+# environment
+VSCODE_PID = 16844
+# environment
+USERDOMAIN_ROAMINGPROFILE = HAMOUDYS-PC
+# variable set hash-table stats:
+# Load=119/1024=12%, Rehash=0, Collisions=14/135=10%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# C:\Python27\ (key C:/Python27/, mtime 1585796988): 15 files, no impossibilities.
+# : could not be stat'd.
+# C:\Program Files (x86)\IVI Foundation\IVI\bin (key C:/Program Files (x86)/IVI Foundation/IVI/bin, mtime 1591925613): 56 files, no impossibilities.
+# C:\Users\oudy_\.deno\bin\ (key C:/Users/oudy_/.deno/bin/, mtime 1608551237): 3 files, no impossibilities.
+# C:\Program Files\Docker\Docker\resources\bin (key C:/Program Files/Docker/Docker/resources/bin, mtime 1624703981): 13 files, no impossibilities.
+# C:\Program Files (x86)\Lame For Audacity\ (key C:/Program Files (x86)/Lame For Audacity/, mtime 1593935872): 7 files, no impossibilities.
+# C:\Program Files (x86)\Razer\ChromaBroadcast\bin (key C:/Program Files (x86)/Razer/ChromaBroadcast/bin, mtime 1631006507): 5 files, no impossibilities.
+# C:\Program Files\processing-3.5.4 (key C:/Program Files/processing-3.5.4, mtime 1590829907): 10 files, no impossibilities.
+# C:\Python27\Scripts (key C:/Python27/Scripts, mtime 1585796993): 7 files, no impossibilities.
+# C:\Program Files (x86)\Razer Chroma SDK\bin (key C:/Program Files (x86)/Razer Chroma SDK/bin, mtime 1643978556): 233 files, no impossibilities.
+# C:\Windows\System32\WindowsPowerShell\v1.0\ (key C:/Windows/System32/WindowsPowerShell/v1.0/, mtime 1622903042): 30 files, no impossibilities.
+# C:\Windows\System32\Wbem (key C:/Windows/System32/Wbem, mtime 1642143146): 192 files, no impossibilities.
+# . (key c:/Users/oudy_/Documents/Projects/C_C++/Magnum/magnum-bootstrap-base, mtime 1637744886): 17 files, no impossibilities.
+# C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\ (key C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/, mtime 1582161964): 73 files, no impossibilities.
+# C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common (key C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common, mtime 1616979161): 11 files, no impossibilities.
+# C:\Python37\ (key C:/Python37/, mtime 1585797098): 17 files, no impossibilities.
+# C:\Users\oudy_\AppData\Roaming\npm\ (key C:/Users/oudy_/AppData/Roaming/npm/, mtime 1620614255): 93 files, no impossibilities.
+# C:\Users\oudy_\AppData\Local\Programs\Microsoft VS Code Insiders\bin (key C:/Users/oudy_/AppData/Local/Programs/Microsoft VS Code Insiders/bin, mtime 1643403479): 4 files, no impossibilities.
+# C:\Python37\Scripts\ (key C:/Python37/Scripts/, mtime 1643413955): 12 files, no impossibilities.
+# C:\ProgramData\chocolatey\bin (key C:/ProgramData/chocolatey/bin, mtime 1582206623): 13 files, no impossibilities.
+# C:\ffmpeg\bin (key C:/ffmpeg/bin, mtime 1593628989): 5 files, no impossibilities.
+# C:\Program Files\IVI Foundation\VISA\Win64\Bin\ (key C:/Program Files/IVI Foundation/VISA/Win64/Bin/, mtime 1591925721): 9 files, no impossibilities.
+# C:\Program Files\dotnet\ (key C:/Program Files/dotnet/, mtime 1625650807): 11 files, no impossibilities.
+# C:\Users\oudy_\AppData\Roaming\npm (key C:/Users/oudy_/AppData/Roaming/npm, mtime 1620614255): 93 files, no impossibilities.
+# C:\Users\oudy_\.dotnet\tools: could not be stat'd.
+# D:\MatLab\bin (key D:/MatLab/bin, mtime 1585200152): 19 files, no impossibilities.
+# C:\MinGW\bin: could not be stat'd.
+# C:\Users\oudy_\AppData\Roaming\nvm (key C:/Users/oudy_/AppData/Roaming/nvm, mtime 1640143367): 16 files, no impossibilities.
+# C:\Program Files\nodejs (key C:/Program Files/nodejs, mtime 1640143377): 8 files, no impossibilities.
+# C:\apache-maven-3.8.1\bin\ (key C:/apache-maven-3.8.1/bin/, mtime 1624536303): 8 files, no impossibilities.
+# C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\ (key C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/110/Tools/Binn/, mtime 1616734219): 6 files, no impossibilities.
+# C:\Windows\System32\OpenSSH\: could not be stat'd.
+# C:\Program Files\PuTTY\ (key C:/Program Files/PuTTY/, mtime 1591948801): 12 files, no impossibilities.
+# C:\Program Files (x86)\Common Files\Oracle\Java\javapath (key C:/Program Files (x86)/Common Files/Oracle/Java/javapath, mtime 1628349808): 5 files, no impossibilities.
+# C:\ProgramData\DockerDesktop\version-bin (key C:/ProgramData/DockerDesktop/version-bin, mtime 1624704135): 2 files, no impossibilities.
+# C:\Program Files (x86)\serialplot\bin (key C:/Program Files (x86)/serialplot/bin, mtime 1615972621): 3 files, no impossibilities.
+# D:\MatLab\runtime\win64 (key D:/MatLab/runtime/win64, mtime 1585200100): 10 files, no impossibilities.
+# C:\Windows (key C:/Windows, mtime 1596217457): 163 files, no impossibilities.
+# C:\Program Files\IVI Foundation\IVI\bin (key C:/Program Files/IVI Foundation/IVI/bin, mtime 1591925617): 50 files, no impossibilities.
+# C:\Users\oudy_\AppData\Local\Microsoft\WindowsApps (key C:/Users/oudy_/AppData/Local/Microsoft/WindowsApps, mtime 1643978156): 36 files, no impossibilities.
+# C:\Program Files\Git\bin (key C:/Program Files/Git/bin, mtime 1620534897): 5 files, no impossibilities so far.
+# C:\Users\oudy_\AppData\Local\Programs\Microsoft VS Code\bin (key C:/Users/oudy_/AppData/Local/Programs/Microsoft VS Code/bin, mtime 1628484984): 4 files, no impossibilities.
+# C:\Program Files (x86)\sox-14-4-2 (key C:/Program Files (x86)/sox-14-4-2, mtime 1593722974): 28 files, no impossibilities.
+# C:\Program Files\Microsoft SQL Server\120\DTS\Binn\ (key C:/Program Files/Microsoft SQL Server/120/DTS/Binn/, mtime 1616734219): 38 files, no impossibilities.
+# C:\Program Files\Razer\ChromaBroadcast\bin (key C:/Program Files/Razer/ChromaBroadcast/bin, mtime 1631006507): 5 files, no impossibilities.
+# C:\SFML-2.5.1\bin (key C:/SFML-2.5.1/bin, mtime 1620643507): 13 files, no impossibilities.
+# C:\Program Files\Razer Chroma SDK\bin (key C:/Program Files/Razer Chroma SDK/bin, mtime 1635807243): 5 files, no impossibilities.
+# C:\Users\oudy_\go\bin: could not be stat'd.
+# C:\Users\oudy_\AppData\Roaming\Python\Python37\Scripts (key C:/Users/oudy_/AppData/Roaming/Python/Python37/Scripts, mtime 1643413955): 34 files, no impossibilities.
+# C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin\ (key C:/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin/, mtime 1591925713): 10 files, no impossibilities.
+# C:\Program Files\Microsoft SQL Server\120\Tools\Binn\ (key C:/Program Files/Microsoft SQL Server/120/Tools/Binn/, mtime 1616734173): 15 files, no impossibilities.
+# C:\Program Files\VulkanSDK\1.2.189.2\Bin (key C:/Program Files/VulkanSDK/1.2.189.2/Bin, mtime 1635730436): 47 files, no impossibilities.
+# C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin (key C:/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin, mtime 1591925713): 10 files, no impossibilities.
+# C:\Program Files\Git\cmd (key C:/Program Files/Git/cmd, mtime 1620102894): 8 files, no impossibilities.
+# C:\Windows\system32 (key C:/Windows/system32, mtime 1643978915): 3252 files, no impossibilities.
+# D:\Program Files\OpenSCAD\ (key D:/Program Files/OpenSCAD/, mtime 1600505518): 10 files, no impossibilities.
+# C:\Go\bin: could not be stat'd.
+# C:\Users\oudy_\AppData\Roaming\Python\Scripts (key C:/Users/oudy_/AppData/Roaming/Python/Scripts, mtime 1586135568): 38 files, no impossibilities.
+# C:\mingw32\bin (key C:/mingw32/bin, mtime 1521467662): 59 files, no impossibilities.
+# C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\ (key C:/Program Files (x86)/Microsoft SQL Server/120/Tools/Binn/, mtime 1616734173): 12 files, no impossibilities.
+# C:\Program Files\CMake\bin (key C:/Program Files/CMake/bin, mtime 1616229773): 7 files, no impossibilities.
+# C:\Program Files (x86)\GnuWin32\bin\ (key C:/Program Files (x86)/GnuWin32/bin/, mtime 1602861385): 5 files, no impossibilities.
+# C:\Program Files\heroku\bin\ (key C:/Program Files/heroku/bin/, mtime 1593942418): 4 files, no impossibilities.
+# C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR (key C:/Program Files/NVIDIA Corporation/NVIDIA NvDLISR, mtime 1570842347): 5 files, no impossibilities.
+# C:\WINDOWS\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps: could not be stat'd.
+
+# 4881 files, no impossibilities in 65 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+# Not a target:
+all:
+#  Command-line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+makefile:
+#  A default, MAKEFILES, or -include/sinclude makefile.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+GNUmakefile:
+#  A default, MAKEFILES, or -include/sinclude makefile.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# files hash-table stats:
+# Load=5/1024=0%, Rehash=0, Collisions=0/16=0%
+# VPATH Search Paths
+
+# No `vpath' search paths.
+
+# No general (`VPATH' variable) search path.
+
+# # of strings in strcache: 0
+# # of strcache buffers: 0
+# strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
+# strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
+
+# Finished Make data base on Fri Feb 04 23:14:07 2022
+
+ 
+make.exe: *** No rule to make target `all'.  Stop.
+ 

@@ -58,14 +58,14 @@ public:
         return registry.destroy(entity);
     }
 
-    template <typename C>
-    auto GetComponent()
+    template <typename... Args>
+    auto GetComponentView()
     {
-        return registry.view<C>();
+        return registry.view<Args...>();
     }
 
     template <typename... Args>
-    auto GetComponents()
+    auto GetComponentGroup()
     {
         return registry.group<Args...>();
     }
@@ -89,8 +89,9 @@ public:
         Entity entity(registry.create(), this);
         entity.AddComponent<Component::Tag>("Editor Camera");
         entity.AddComponent<Component::Index>(editorCameraCount);
-        entity.AddComponent<Component::Camera>(Magnum::Deg(35.0f), Vector2{16, 9}.aspectRatio(), 0.01f, 100.0f); // perspective camera by default
+        entity.AddComponent<Component::Camera>(Deg(35.0f), Vector2{16, 9}.aspectRatio(), 1.f, 50.f); // perspective camera by default
         entity.AddComponent<Component::Transform>();
+        entity.AddComponent<Component::Gui::Gizmo>("../assets/video-camera-icon.svg", Vector2i{512, 512});
 
         editorCameraCount++;
         return entity;
@@ -117,8 +118,13 @@ public:
         }
     }
 
+    Entity GetSelectedEntity() { return selectedEntity; }
+    void SetSelectedEntity(Entity entity) { selectedEntity = entity; }
+
 private:
     entt::registry registry;
     uint32_t       editorCameraCount = 0;
+
+    Entity selectedEntity;
 };
 } // namespace Ham

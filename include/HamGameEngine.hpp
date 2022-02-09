@@ -4,13 +4,13 @@
 
 #include "Layers/ImGuiLayer.hpp"
 #include "Layers/RenderLayer.hpp"
-#include "Layers/RenderLayer2.hpp"
+#include "Layers/EditorLayer.hpp"
 
 using namespace Math::Literals;
 
 namespace Ham
 {
-// using namespace Magnum::ImGuiIntegration;
+// using namespace ImGuiIntegration;
 
 class GameEngine : public Platform::Application
 {

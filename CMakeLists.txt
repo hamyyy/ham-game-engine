@@ -3,6 +3,7 @@ project(Ham-Game-Engine)
 
 set(RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_BUILD_TYPE}/bin)
 
+
 file(GLOB SOURCE CONFIGURE_DEPENDS "./src/*.cpp" "./src/*/*.cpp" "./src/*.c" "./src/*/*.c")
 file(GLOB INCLUDE CONFIGURE_DEPENDS "./src/*.hpp" "./src/*/*.hpp" "./src/*.h" "./src/*/*.h")
 
@@ -12,7 +13,12 @@ set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/modules/" ${CMAKE_MODULE_PATH})
 
 set_directory_properties(PROPERTIES CORRADE_USE_PEDANTIC_FLAGS ON)
 
-add_executable(${PROJECT_NAME} WIN32 ${SOURCE} ${INCLUDE} ${IMGUIZMO_SOURCE})
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    add_executable(${PROJECT_NAME} ${SOURCE} ${INCLUDE} ${IMGUIZMO_SOURCE})
+else()
+    add_executable(${PROJECT_NAME} WIN32 ${SOURCE} ${INCLUDE} ${IMGUIZMO_SOURCE})
+endif()
+
 
 add_custom_command(
     TARGET ${PROJECT_NAME} POST_BUILD 

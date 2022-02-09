@@ -2,7 +2,8 @@
 
 namespace Ham
 {
-class Layer
+
+class Layer: public Entity
 {
 public:
     Layer(const std::string& name = "Layer") :
@@ -14,20 +15,20 @@ public:
     virtual void renderUI(){};
     virtual void exit() {}
 
-    virtual void viewportEvent(Magnum::Platform::Application::ViewportEvent& event) {}
-    virtual void keyPressEvent(Magnum::Platform::Application::KeyEvent& event) {}
-    virtual void keyReleaseEvent(Magnum::Platform::Application::KeyEvent& event) {}
-    virtual void mousePressEvent(Magnum::Platform::Application::MouseEvent& event) {}
-    virtual void mouseReleaseEvent(Magnum::Platform::Application::MouseEvent& event) {}
-    virtual void mouseMoveEvent(Magnum::Platform::Application::MouseMoveEvent& event) {}
-    virtual void mouseScrollEvent(Magnum::Platform::Application::MouseScrollEvent& event) {}
-    virtual void textInputEvent(Magnum::Platform::Application::TextInputEvent& event) {}
+    virtual void viewportEvent(Platform::Application::ViewportEvent& event) {}
+    virtual void keyPressEvent(Platform::Application::KeyEvent& event) {}
+    virtual void keyReleaseEvent(Platform::Application::KeyEvent& event) {}
+    virtual void mousePressEvent(Platform::Application::MouseEvent& event) {}
+    virtual void mouseReleaseEvent(Platform::Application::MouseEvent& event) {}
+    virtual void mouseMoveEvent(Platform::Application::MouseMoveEvent& event) {}
+    virtual void mouseScrollEvent(Platform::Application::MouseScrollEvent& event) {}
+    virtual void textInputEvent(Platform::Application::TextInputEvent& event) {}
 
     std::string GetName() { return _name; }
     bool        isVisible() { return _visible; }
 
 protected:
-    bool _visible = true;
+    bool      _visible = true;
 
 private:
     std::string _name;
